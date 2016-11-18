@@ -180,27 +180,30 @@ while( $i<20){
 };
 
 //23
+<?php
 $html='';
 $sum =0;
 $number=0;
-$html .= '<form method="post"> <input type="text" name="number" value="">Введите число<Br>  <br>
+if (isset($_POST["number"])) {
+	$html .='<form action="" method="POST"> <input type="text" name="number" value="">Введите число<Br>  <br>
 		         <input type="submit" name="result" value="Вычислить"> 
-         </form><br>'  ;
-$number= $_POST["number"];
-
-
+	</form><br>';
+	$number =$_POST["number"];
 $count=strlen($number);
 if ($_POST["result"]){
-
-    for ($i=0;$i<$count;$i++){
-        $sum += $number[$i];
-
-    };
+	//echo $number;
+	for ($i=0;$i<$count;$i++){
+	$sum += $number[$i];
+		
+	};
 };
-
 $html .= $sum	;
-echo $html;
-echo '<br>';
+	echo $html;	
+}else{
+	echo '<form action="" method="POST"> <input type="text" name="number" value="">Введите число<Br>  <br>
+		         <input type="submit" name="result" value="Вычислить"> 
+	</form><br>';
+}
 
 //24
 $num=442158755745;
@@ -208,22 +211,18 @@ $a = substr_count($num,5);
 echo $a . '<br>';
 //25
 
+//array = array();
 for ($i = 0; $i < 10; $i++) {
-    $arr25[$i]=rand(0,10);
-
-};
+    $arr25[$i]=rand(0,10);	
+   };
 print_r ($arr25);
  echo '<br>';
 $max=max($arr25);
 $min=min($arr25);
-for ($i=1;$i<10;$i++){
-    $min_i=array_search($min,$arr25);
-    $max_i=array_search($max,$arr25);
-}
-$min_k=$min_i;
-$max_k=$max_i;
+$min_k=array_search($min,$arr25);
+$max_k=array_search($max,$arr25);
 $arr25[$min_k]=$max;
-$arr25[$max_k]=$min;
+$arr25[$max_k]=$min;л
 print_r($arr25);
 echo '<br>';
 //27
